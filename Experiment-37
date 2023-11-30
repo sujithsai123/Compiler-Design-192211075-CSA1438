@@ -1,0 +1,33 @@
+%{ 
+    int counter = 0;
+%} 
+ 
+%%
+[a-zA-Z]+ { 
+    if (yyleng > counter) {
+        counter = yyleng;
+    } 
+} 
+%% 
+
+int main() { 
+    yylex(); 
+    printf("Largest: %d\n", counter); 
+    return 0;
+}
+
+int yywrap() {
+    return 1;
+}
+OUTPUT:
+\Users\Sujith>cd\lex programs
+
+C:\lex programs>flex 37.l
+
+C:\lex programs>gcc lex.yy.c
+
+C:\lex programs>a.exe
+Treess are located in forest
+
+^Z
+Largest: 7
