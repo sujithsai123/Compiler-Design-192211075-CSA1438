@@ -1,0 +1,22 @@
+%%
+[0-9]+ {printf("\nValid digit \n");} 
+.* printf("\nInvalid digit\n");
+%%
+int yywrap(){}
+int main()											
+{
+yylex();
+return 0;
+}
+
+OUTPUT:
+:\Users\Sujith>cd\lex programs
+
+C:\lex programs>flex digits.l
+
+C:\lex programs>gcc lex.yy.c
+
+C:\lex programs>a.exe
+855
+
+Valid digit
