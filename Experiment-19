@@ -1,0 +1,49 @@
+%{
+int tags;
+%}
+%%
+"<"[^>]*>  { tags++; printf("%s \n", yytext); }
+.|\n { }
+%%
+int yywrap(void) {
+return 1; }
+int main(void)
+{
+FILE *f;
+char file[10];
+printf("Enter File Name : ");
+scanf("%s",file);
+f = fopen(file,"r");
+yyin = f;
+yylex();
+printf("\n Number of html tags: %d",tags);
+fclose(yyin);  
+}
+
+INUPUT:
+<html>
+<body>
+<h1>My First Heading</h1>
+<p>My first paragraph.</p>
+</body>
+</html>
+
+OUTPUT:
+\Users\Sujith>cd\lex programs
+
+C:\lex programs>flex c=ht.l
+flex: can't open c=ht.l
+
+C:\lex programs>\flex h.tl
+'\flex' is not recognized as an internal or external command,
+operable program or batch file.
+
+C:\lex programs>flex ht.l
+
+C:\lex programs>gcc lex.yy.c
+
+C:\lex programs>a.exe ht.c
+Enter File Name : ht.l
+<"[^>
+
+ Number of html tags: 1
