@@ -1,0 +1,35 @@
+%{
+    int flag = 0;
+%}
+
+%%
+[aeiouAEIOU].[a-zA-Z0-9.]+ { flag = 1; }
+[a-zA-Z0-9]+
+
+%%
+
+int main() {
+    yylex();
+    if (flag == 1)
+        printf("Accepted\n");
+    else
+        printf("Not Accepted\n");
+    return 0;
+}
+
+int yywrap() {
+    return 1;
+}
+
+OUTPUT:
+:\Users\Sujith>cd\lex programs
+
+C:\lex programs>flex very.l
+
+C:\lex programs>gcc lex.yy.c
+
+C:\lex programs>a.exe
+and
+
+^Z
+Accepted
