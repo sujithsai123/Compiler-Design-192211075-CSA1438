@@ -1,0 +1,39 @@
+%{
+#include <stdio.h>
+%}
+
+%%
+
+"abc" {
+    printf("ABC");
+}
+
+. {
+    printf("%s", yytext);
+}
+
+\n {
+    printf("\n");
+}
+
+%%
+
+int main(void) {
+    yylex();
+    return 0;
+}
+
+int yywrap(void) {
+    return 1;
+}
+
+OUTPUT:
+Users\Sujith>cd\lex programs
+
+C:\lex programs>flex replace.l
+
+C:\lex programs>gcc lex.yy.c
+
+C:\lex programs>a.exe
+abc
+ABC
