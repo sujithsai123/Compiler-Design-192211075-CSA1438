@@ -1,0 +1,40 @@
+%{
+#include <stdio.h>
+%}
+
+%%
+[[:alpha:]]+    { printf("Word: %s\n", yytext); }
+"=="            { printf("Relational Operator: ==\n"); }
+"!="            { printf("Relational Operator: !=\n"); }
+"<"             { printf("Relational Operator: <\n"); }
+">"             { printf("Relational Operator: >\n"); }
+"<="            { printf("Relational Operator: <=\n"); }
+">="            { printf("Relational Operator: >=\n"); }
+.               { printf("Invalid Character: %s\n", yytext); }
+
+%%
+
+int main() {
+    printf("Enter a word or a relational operator:\n");
+    yylex();
+    return 0;
+}
+int yywrap()
+{
+ return 1;
+}
+
+OUTPUT:
+\Users\Sujith>cd\lex programs
+
+C:\lex programs>flex 40.l
+
+C:\lex programs>gcc lex.yy.c
+
+C:\lex programs>a.exe
+Enter a word or a relational operator:
+==
+Relational Operator: ==
+
+jello
+Word: jello
