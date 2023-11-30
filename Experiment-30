@@ -1,0 +1,35 @@
+%%
+[\t ]+ ;
+[0-9]+|[0-9]*\.[0-9]+ { printf("\n%s is NUMBER", yytext);}
+#.* { printf("\n%s is COMMENT", yytext);}
+[a-zA-Z]+ { printf("\n%s is WORD", yytext);}
+\n { ECHO;}
+%%
+int main()
+{
+	while( yylex());
+}
+
+int yywrap( )
+{
+	return 1;
+}
+
+OUTPUT:
+\Users\Sujith>cd\lex programs
+
+C:\lex programs>flex words.l
+
+C:\lex programs>gcc lex.yy.c
+
+C:\lex programs>a.exe
+super
+
+super is WORD
+56445
+
+56445 is NUMBER
+jefgje5565
+
+jefgje is WORD
+5565 is NUMBER
