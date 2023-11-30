@@ -1,0 +1,33 @@
+%{
+#include <stdio.h>
+%}
+
+%%
+[A-Z][a-z]*	{ printf("Capital word: %s\n", yytext); }
+.|\n		; // Ignore other characters
+%%
+
+int yywrap() {
+    return 0;
+}
+
+int main() {
+    yylex();
+    return 0;
+}
+
+OUTPUT:
+Users\Sujith>cd\lex programs
+
+C:\lex programs>flex caps.l
+
+C:\lex programs>gcc lex.yy.c
+
+C:\lex programs>a.exe
+DRGYJG
+Capital word: D
+Capital word: R
+Capital word: G
+Capital word: Y
+Capital word: J
+Capital word: G
